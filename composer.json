@@ -1,3 +1,4 @@
 {
+    composer require nyholm/psr7
     "license": "(LGPL-2.1-only or GPL-3.0-or-later)"
 }
