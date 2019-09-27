@@ -1,4 +1,16 @@
 <?php
+
+use Buzz\Browser;
+use Buzz\Client\FileGetContents;
+
+$client = new FileGetContents(new Psr17ResponseFactory());
+$browser = new Browser($client, new Psr17RequestFactory());
+$response = $browser->get('https://www.google.com');
+
+echo $browser->getLastRequest()."\n";
+// $response is a PSR-7 object.
+echo $response->getStatusCode();
+
 $count = file_get_contents('inc.txt', true);
 $fp = fopen($count.'rsstxt.txt' ,'wa');
 $rss = simplexml_load_file('http://fakty.interia.pl/feed');
