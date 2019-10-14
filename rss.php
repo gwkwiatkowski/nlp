@@ -14,9 +14,12 @@ foreach ($rss->channel->item as $item) {
 // Write the contents back to the file
 
 $count=$count+1;
-fwrite($fp, $item->title);
+fwrite($fp, utf8_encode($item->title));
 fwrite($fp, "\n");
- fwrite($fp, strip_tags($item->description));
+ fwrite($fp, utf8_encode(strip_tags($item->description)));
+ fwrite($fp,utf8_encode( strip_tags($item->category)));
+ 
+
 $fpc = fopen('inc.txt', 'w');
 fwrite($fpc,$count );
 fclose($fpc);
