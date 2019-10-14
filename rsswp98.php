@@ -26,10 +26,13 @@ foreach ($rss->channel->item as $item) {
 // Open the file to get existing content
 // Append a new person to the file
 // Write the contents back to the file
-
+fwrite($fp, utf8_encode($item->title));
 fwrite($fp, "\n");
- fwrite($fp, strip_tags($item->description));
- fwrite($fp, strip_tags($item->category));
+ fwrite($fp, utf8_encode(strip_tags($item->description)));
+ fwrite($fp,utf8_encode( strip_tags($item->category)));
+ 
+
+
 }
  fclose($fp);
 ?>
